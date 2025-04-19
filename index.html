@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrowdPe - Crowdfunding Platform</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">CrowdPe</a>
+            <button class="mobile-menu-btn">☰</button>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="pages/browse.html">Browse</a>
+                <div class="auth-buttons">
+                    <a href="pages/login.html" class="btn btn-secondary">Login</a>
+                    <a href="pages/signup.html" class="btn btn-primary">Sign Up</a>
+                </div>
+                <div class="user-menu" style="display: none;">
+                    <a href="pages/dashboard.html">Dashboard</a>
+                    <span class="user-email"></span>
+                    <a href="#" id="logoutBtn">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="error-message" id="homeError"></div>
+
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">Fund Your Dreams</h1>
+            <p class="hero-subtitle">Join thousands of creators and entrepreneurs bringing their ideas to life</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" id="startCampaignBtn">Start a Campaign</button>
+                <a href="pages/browse.html" class="btn btn-secondary">Discover Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="statistics-section">
+        <div class="container">
+            <div class="statistics-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalCampaigns">-</div>
+                    <div class="stat-label">Total Campaigns</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalFunding">-</div>
+                    <div class="stat-label">Total Funding</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalBackers">-</div>
+                    <div class="stat-label">Total Backers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="successRate">-</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="categories-section">
+            <h2 class="section-title">Browse Categories</h2>
+            <div class="categories-grid">
+                <div class="category-card" data-category="technology">
+                    <div class="category-icon">💻</div>
+                    <h3 class="category-title">Technology</h3>
+                    <div class="category-count">Innovations & Gadgets</div>
+                </div>
+                <div class="category-card" data-category="creative">
+                    <div class="category-icon">🎨</div>
+                    <h3 class="category-title">Creative</h3>
+                    <div class="category-count">Art & Culture</div>
+                </div>
+                <div class="category-card" data-category="community">
+                    <div class="category-icon">🤝</div>
+                    <h3 class="category-title">Community</h3>
+                    <div class="category-count">Social Impact</div>
+                </div>
+                <div class="category-card" data-category="business">
+                    <div class="category-icon">💼</div>
+                    <h3 class="category-title">Business</h3>
+                    <div class="category-count">Startups & SMEs</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-section">
+            <h2 class="section-title">Featured Campaigns</h2>
+            <div class="campaigns-grid">
+                <div class="loading-spinner">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script type="module" src="assets/js/firebase.js"></script>
+    <script type="module" src="assets/js/auth.js"></script>
+    <script type="module" src="assets/js/main.js"></script>
+
+    <script>
+        // Handle mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

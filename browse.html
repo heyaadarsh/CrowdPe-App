@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Campaigns - CrowdPe</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/browse.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="../index.html" class="logo">CrowdPe</a>
+            <button class="mobile-menu-btn">☰</button>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="browse.html" class="active">Browse</a>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-secondary">Login</a>
+                    <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                </div>
+                <div class="user-menu" style="display: none;">
+                    <a href="dashboard.html">Dashboard</a>
+                    <span class="user-email"></span>
+                    <a href="#" id="logoutBtn">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container browse-container">
+        <div class="error-message" id="browseError"></div>
+
+        <div class="browse-header">
+            <h1>Browse Campaigns</h1>
+            <form id="searchForm" class="search-form">
+                <div class="search-input">
+                    <input type="text" id="searchInput" placeholder="Search campaigns...">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="browse-content">
+            <aside class="filters-sidebar">
+                <div class="filter-section">
+                    <h3>Categories</h3>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="category" value="technology">
+                            Technology
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="category" value="creative">
+                            Creative
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="category" value="community">
+                            Community
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="category" value="business">
+                            Business
+                        </label>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3>Progress</h3>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="progress" value="new">
+                            Just Launched
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="progress" value="trending">
+                            Trending
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="progress" value="ending">
+                            Ending Soon
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="progress" value="funded">
+                            Fully Funded
+                        </label>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3>Sort By</h3>
+                    <select id="sortSelect" class="sort-select">
+                        <option value="newest">Newest First</option>
+                        <option value="mostFunded">Most Funded</option>
+                        <option value="mostBackers">Most Backers</option>
+                        <option value="endingSoon">Ending Soon</option>
+                    </select>
+                </div>
+
+                <button id="clearFilters" class="btn btn-secondary">Clear Filters</button>
+            </aside>
+
+            <main class="campaigns-main">
+                <div class="active-filters"></div>
+                <div class="campaigns-grid">
+                    <div class="loading-spinner">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+                <div class="load-more" style="display: none;">
+                    <button id="loadMoreBtn" class="btn btn-secondary">Load More</button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script type="module" src="../assets/js/firebase.js"></script>
+    <script type="module" src="../assets/js/auth.js"></script>
+    <script type="module" src="../assets/js/browse.js"></script>
+
+    <script>
+        // Handle mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
