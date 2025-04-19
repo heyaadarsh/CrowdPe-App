@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaign Details - CrowdPe</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/campaign.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="../index.html" class="logo">CrowdPe</a>
+            <button class="mobile-menu-btn">☰</button>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="#" id="logoutBtn">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="campaign-container container">
+        <div class="error-message" id="campaignError"></div>
+        <div class="success-message" id="campaignSuccess"></div>
+
+        <div class="campaign-header">
+            <div class="campaign-main">
+                <img src="" alt="Campaign" class="campaign-image">
+                <h1 class="campaign-title"></h1>
+                <div class="campaign-meta">
+                    <span class="category"></span>
+                    <span class="creator"></span>
+                </div>
+                <div class="campaign-description"></div>
+            </div>
+
+            <div class="progress-section">
+                <div class="campaign-stats">
+                    <div class="stat-item">
+                        <div class="value raised-amount">$0</div>
+                        <div class="label">raised of <span class="goal-amount">$0</span></div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="value backer-count">0</div>
+                        <div class="label">backers</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="value time-remaining">0</div>
+                        <div class="label">days to go</div>
+                    </div>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%"></div>
+                </div>
+
+                <form id="donateForm" class="donation-form">
+                    <h3>Select Amount</h3>
+                    <div class="amount-options">
+                        <div class="amount-option" data-amount="10">$10</div>
+                        <div class="amount-option" data-amount="25">$25</div>
+                        <div class="amount-option" data-amount="50">$50</div>
+                    </div>
+                    <div class="form-group custom-amount">
+                        <input type="number" id="customAmount" placeholder="Custom amount">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Back this project</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="tabs-container">
+            <div class="tabs-header">
+                <button class="tab-button active" data-tab="updates">Updates</button>
+                <button class="tab-button" data-tab="comments">Comments</button>
+                <button class="tab-button" data-tab="rewards">Rewards</button>
+                <button class="tab-button" data-tab="milestones">Milestones</button>
+            </div>
+
+            <!-- Updates Tab -->
+            <div id="updatesTab" class="tab-content active">
+                <div class="updates-list">
+                    <!-- Updates will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Comments Tab -->
+            <div id="commentsTab" class="tab-content">
+                <div class="comments-section">
+                    <form id="commentForm" class="comment-form">
+                        <div class="form-group">
+                            <textarea id="commentContent" rows="3" placeholder="Write a comment..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Post Comment</button>
+                    </form>
+                    <div class="comments-list">
+                        <!-- Comments will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rewards Tab -->
+            <div id="rewardsTab" class="tab-content">
+                <div class="rewards-grid">
+                    <!-- Rewards will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Milestones Tab -->
+            <div id="milestonesTab" class="tab-content">
+                <div class="milestones-list">
+                    <!-- Milestones will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <script type="module" src="../assets/js/firebase.js"></script>
+    <script type="module" src="../assets/js/auth.js"></script>
+    <script type="module" src="../assets/js/campaign.js"></script>
+
+    <script>
+        // Handle mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

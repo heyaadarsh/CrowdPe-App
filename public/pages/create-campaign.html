@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Campaign - CrowdPe</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/create-campaign.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="../index.html" class="logo">CrowdPe</a>
+            <button class="mobile-menu-btn">☰</button>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="#" id="logoutBtn">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="wizard-container container">
+        <div class="wizard-header">
+            <h1>Create Your Campaign</h1>
+            <p>Let's bring your idea to life</p>
+        </div>
+
+        <div class="error-message" id="wizardError"></div>
+
+        <div class="progress-steps">
+            <div class="step active" data-step="1">1</div>
+            <div class="step" data-step="2">2</div>
+            <div class="step" data-step="3">3</div>
+            <div class="step" data-step="4">4</div>
+        </div>
+
+        <div class="wizard-content">
+            <form id="campaignForm">
+                <!-- Step 1: Basic Information -->
+                <div class="form-step active" data-step="1">
+                    <h2>Basic Information</h2>
+                    <div class="form-group">
+                        <label for="title">Campaign Title</label>
+                        <input type="text" id="title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Campaign Description</label>
+                        <textarea id="description" name="description" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" name="category" required>
+                            <option value="">Select a category</option>
+                            <option value="technology">Technology</option>
+                            <option value="creative">Creative</option>
+                            <option value="community">Community</option>
+                            <option value="business">Business</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Step 2: Funding Goals -->
+                <div class="form-step" data-step="2">
+                    <h2>Funding Goals</h2>
+                    <div class="form-group">
+                        <label for="goalAmount">Goal Amount ($)</label>
+                        <input type="number" id="goalAmount" name="goalAmount" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="duration">Campaign Duration (Days)</label>
+                        <input type="number" id="duration" name="duration" min="1" max="60" value="30" required>
+                    </div>
+                    <div class="milestone-section">
+                        <h3>Milestones</h3>
+                        <p>Add funding milestones to show your campaign progress</p>
+                        <div class="milestone-list"></div>
+                        <button type="button" class="btn btn-secondary" id="addMilestone">Add Milestone</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Media -->
+                <div class="form-step" data-step="3">
+                    <h2>Campaign Media</h2>
+                    <div class="form-group">
+                        <label>Campaign Image</label>
+                        <div class="media-upload">
+                            <input type="file" id="campaignImage" accept="image/*" style="display: none;">
+                            <p>Click or drag image here</p>
+                            <small>Recommended size: 1200x630 pixels</small>
+                        </div>
+                        <img class="media-preview" alt="Campaign preview">
+                    </div>
+                </div>
+
+                <!-- Step 4: Rewards -->
+                <div class="form-step" data-step="4">
+                    <h2>Backer Rewards</h2>
+                    <p>Create attractive rewards for your campaign backers</p>
+                    <div class="reward-list"></div>
+                    <button type="button" class="btn btn-secondary" id="addReward">Add Reward</button>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="form-navigation">
+                    <button type="button" class="btn btn-secondary wizard-nav-btn" data-direction="prev">Previous</button>
+                    <button type="button" class="btn btn-primary wizard-nav-btn" data-direction="next">Next</button>
+                    <button type="submit" class="btn btn-primary" style="display: none;">Create Campaign</button>
+                </div>
+            </form>
+
+            <!-- Live Preview -->
+            <div class="preview-panel">
+                <h3>Campaign Preview</h3>
+                <img src="" alt="Campaign preview" class="preview-image">
+                <h2 class="preview-title">Campaign Title</h2>
+                <p class="preview-description">Campaign description will appear here...</p>
+                <div class="preview-goal">$0</div>
+                <div class="preview-duration">30 days</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <script type="module" src="../assets/js/firebase.js"></script>
+    <script type="module" src="../assets/js/auth.js"></script>
+    <script type="module" src="../assets/js/createCampaign.js"></script>
+
+    <script>
+        // Handle mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
